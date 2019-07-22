@@ -21,7 +21,9 @@ public interface IStudent {
 			"		sid number(10)," + 
 			"		sname varchar2(20)," + 
 			"		sage number(10)," + 
-			"		saddress varchar2(100)" + 
+			"		saddress varchar2(100)," + 
+			"		sclass varchar2(100)," + 
+			"		passward number(10) default('123456')" + 
 			"		)")
 	public void createTable(@Param("table")String table);
 	

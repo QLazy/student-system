@@ -1,3 +1,7 @@
+
+
+
+
 //切换增加与修改的界面
 	function addOrInsert() {
 		var myid = GetQueryString("sid");

@@ -50,22 +50,14 @@
 		</nav>
 		<!-- 下拉选择班级 -->
 		<div class="btn-group">
-		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="butSelect">
 		    	请选择班级 <span class="caret"></span>
 		  </button>
-		  <ul class="dropdown-menu" >
-		    <div th:each="str:${queryAllClass}" >
-		    <li>
-				<div>
-					<a th:href="@{'queryAllByClass?sclass='+${str}}" th:text="${str}">请选择班级</a>
-				</div>
-		    </li>
-			</div>
-		    <!--  -->
+		  <ul class="dropdown-menu" id="hrefClass">
 		  </ul>
 		</div>
-		<div class="btn-group" role="group" aria-label="...">
-		  <button type="button" class="btn btn-default"><a th:href="@{'addOrInsertStu.html?sclass=student'}">增加单个学生</a></button>
+		<div class="btn-group" role="group" aria-label="..." th:if="${queryAll!=null}">
+		  <button type="button" class="btn btn-default"><a th:href="@{'addOrInsertStu.html?sclass='+${myClass}}">增加单个学生</a></button>
 		</div>
 		<!-- 批量上传学生，根据文件名创建班级 -->
 		<form action="/getStudent" method="post" id="myFile" enctype="multipart/form-data">
@@ -75,28 +67,9 @@
 		  <butten  class="btn btn-default" id="formSubmit">上传</butten>
 		</form>
 		<button ><a href="testDownload">下载</a> </button>
-		<script type="text/javascript">
-			$(function(){
-				$("#formSubmit").click(function(){
-					var form = new FormData(document.getElementById("myFile"));
-					$.ajax({
-						url: "/getStudent",
-						type: "post",
-						data:form,
-						processData: false,
-	                    contentType: false,
-						success: function(data){
-							alert("success"+data);
-						},
-						error: function(data){
-							alert("error"+data);
-						}
-					});
-				});
-			});
-		</script>
+		
 		<!-- 如果后端传值为空，则不显示table -->
-		<div th:if="${queryAll}!=null">
+		<div th:if="${queryAll!=null}">
 			<table class="table table-hover stutable ">
 				<tr>
 					<th>学号</th>
@@ -109,7 +82,7 @@
 						    增加 <span class="caret"></span>
 						  </button>
 						  <ul class="dropdown-menu">
-						    <li><a th:href="@{'addOrInsertStu.html?sclass=student'}">增加单个学生</a></li>
+<!-- 						    <li><a th:href="@{'addOrInsertStu.html?sclass='+${myClass}}" >增加单个学生</a></li> -->
 						    <li><a href="#">批量导入</a></li>
 						  </ul>
 						</div>
@@ -136,10 +109,7 @@
 														    	+'&sname='+escape([[${student.sname}]])
 														    	+'&sage='+[[${student.sage}]]
 														    	+'&saddress='+escape([[${student.saddress}]]);
-						    	//@{addOrInsertStu.html(sclass=${myClass},sid=${student.sid},sname=${student.sname},saddress=${student.saddress},sage=${student.sage})}
-						    	var myInsert = $("#[[${student.sid}]]");
-						    	myInsert.attr("href",myURL);
-						    	//$("#changeStudent").href=myURL;
+						    	$("#[[${student.sid}]]").attr("href",myURL);
 						    </script>
 						    
 						    </li>
@@ -149,5 +119,47 @@
 				</tr>
 			</table>
 		</div>
+		<script type="text/javascript">
+			$(function(){
+				$("#butSelect").click(function(){
+					var str = "";
+					$.ajax({
+						url: "/queryAllClass",
+						type: "post",
+						//data:form,
+						processData: false,
+	                    contentType: false,
+						success: function(data){
+							for(var i=0;i<data.length;i++){
+								str +='<li >'+'<a href="queryAllByClass?sclass='+data[i]+'">'+data[i]+'</a>'+'</li>';
+							}
+							$("#hrefClass").html(str);
+						},
+						error: function(data){
+							alert("error"+data);
+						}
+					});
+				});
+			});
+		
+			$(function(){
+				$("#formSubmit").click(function(){
+					var form = new FormData(document.getElementById("myFile"));
+					$.ajax({
+						url: "/getStudent",
+						type: "post",
+						data:form,
+						processData: false,
+	                    contentType: false,
+						success: function(data){
+							alert("success"+data);
+						},
+						error: function(data){
+							alert("error"+data);
+						}
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

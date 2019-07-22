@@ -20,12 +20,15 @@ Spring Tool Suite4（eclipse）
 
 > 技术选型
 ###### 前端技术：
-Thymeleaf：Spring Boot官方推荐的模板引擎
-JavaScript
+
+- Thymeleaf：Spring Boot官方推荐的模板引擎
+- JavaScript
+
 ###### 后端技术：
-Spring Boot框架：很好用的基础层框架
-Lombok：一个很好用的jar包，暂时只用到它自动创建set、get和toString方法
-Mybatis：暂时只用到它Mapper映射功能，持久层框架
+
+- Spring Boot框架：很好用的基础层框架
+- Lombok：一个很好用的jar包，暂时只用到它自动创建set、get和toString方法
+- Mybatis：暂时只用到它Mapper映射功能，持久层框架
 
 >基本思路
 
@@ -48,3 +51,10 @@ Mybatis：暂时只用到它Mapper映射功能，持久层框架
 > 简单感想
 
 真的做得很简陋，期待之后能把它不断完善起来，在这几天的编写过程中学到了很多，也把之前的知识点串起来了，之后想到什么意思的功能就会把它加到这来，最终想法是能将其打造成学生与老师两个版本，再加上一个公共的聊天场地。
+
+---
+**2019-7-23更新**
+
+- 修复一些BUG
+- 将部分功能改为ajax
+ 
