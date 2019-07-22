@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.Mapper.IStudent">
+	
+<!--    <select id="findStuByID" resultType="com.example.entity.Student"> -->
+<!-- 		select * from ${table} where sid = #{id} -->
+<!--    </select> -->
+<!-- 	<select id="findAll" resultType="com.example.entity.Student" > -->
+<!-- 		select * from ${table}  -->
+<!--    </select> -->
+<!--    <select id="findAllTable" resultType="string"> -->
+<!-- 		select * from tab  -->
+<!--    </select> -->
+   
+<!--    <delete id="deleteByID" > -->
+<!-- 		delete from ${table} where sid=#{id} -->
+<!--    </delete> -->
+
+<!--    <update id="updateByID" > -->
+<!-- 		update ${table} set  -->
+<!-- 		sname=#{student.SName},saddress=#{student.SAddress},sage=#{student.SAge}  -->
+<!-- 		where sid=#{student.Sid} -->
+<!--    </update> -->
+   
+<!--    <update id="createTable" > -->
+<!-- 		create table ${table}(   -->
+<!-- 		  sid number(10),   -->
+<!-- 		  sname varchar2(20),   -->
+<!-- 		  sage number(10), -->
+<!-- 		  saddress varchar2(100) -->
+<!-- 		) -->
+<!--    </update> -->
+    
+<!--    <insert id="insert" > -->
+<!--    		insert into ${table}(sid,sname,sage,saddress)  -->
+<!--    		values(#{student.Sid},#{student.SName},#{student.SAge},#{student.SAddress}) -->
+<!--    </insert> -->
+
+</mapper>
