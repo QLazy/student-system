@@ -12,10 +12,10 @@ grammar_code: true
 
 > 开发环境
 
-Java 1.8
-Maven
-Orcal 11g
-Spring Tool Suite4（eclipse）
+- JDK 1.8
+- Maven
+- Orcal 11g
+- Spring Tool Suite4（eclipse）
 
 
 
