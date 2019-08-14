@@ -50,7 +50,7 @@
 		</nav>
 		<!-- 下拉选择班级 -->
 		<div class="btn-group">
-		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="butSelect">
+		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="classSelect">
 		    	请选择班级 <span class="caret"></span>
 		  </button>
 		  <ul class="dropdown-menu" id="hrefClass">
@@ -70,6 +70,7 @@
 		
 		<!-- 如果后端传值为空，则不显示table -->
 		<div th:if="${queryAll!=null}">
+			
 			<table class="table table-hover stutable ">
 				<tr>
 					<th>学号</th>
@@ -118,10 +119,32 @@
 					</td>
 				</tr>
 			</table>
+			<div>
+				<nav aria-label="Page navigation">
+				  <ul class="pagination">
+				    <li>
+				      <a th:href="@{'queryAllByClass?sclass='+${myClass}+'&pageNum='+${currentPage-1}}" aria-label="Previous">
+				        <span aria-hidden="true">上一页</span>
+				      </a>
+				    </li>
+			      </ul>
+				    <ul class="pagination" th:each="i: ${#numbers.sequence(1,pageCount)}">
+				    <li><a th:href="@{'queryAllByClass?sclass='+${myClass}+'&pageNum='+${i}}">[[${i}]]</a></li>
+				    </ul>
+				  <ul class="pagination">
+				    <li>
+				      <a th:href="@{'queryAllByClass?sclass='+${myClass}+'&pageNum='+${currentPage+1}}" aria-label="Next">
+				        <span aria-hidden="true">下一页</span>
+				      </a>
+				    </li>
+				  </ul>
+				</nav>
+			</div>
 		</div>
+		
 		<script type="text/javascript">
 			$(function(){
-				$("#butSelect").click(function(){
+				$("#classSelect").click(function(){
 					var str = "";
 					$.ajax({
 						url: "/queryAllClass",

@@ -38,7 +38,8 @@ public class getStuByExcel {
 		OutputStream os = null;
 		try {
 			os = response.getOutputStream();
-			bis = new FileInputStream(new File("D:\\"+fileName));
+			bis = new FileInputStream(new File("C:\\Users\\Administrator\\git\\repository\\enter\\src\\main\\resources\\static\\"
+												+fileName));
 			int read = bis.read(buff);
 			while(read!=-1) {
 				os.write(buff,0,buff.length);

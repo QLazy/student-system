@@ -11,18 +11,27 @@ import com.example.demo.entity.Student;
 public class myService {
 	@Autowired
 	private IStudent istudent;
-	//查询全部学生
-	public List<Student> queryAll(String table) {
-		return istudent.findAll(table);
+	
+	//分页查询全部学生
+	public List<Student> queryAll(String table,int currentAllData,int pageStartData) {
+		return istudent.findAll(table,currentAllData,pageStartData);
 	}
-	//查询单个学生
+	
+	//根据ID查询班级中单个学生
 	public Student queryOne(String table,int id) {
 		return istudent.findStuByID(table,id);
 	}
+	
+	//查询班级内全部学生数量
+	public int queryStuNumByClass(String table) {
+		return istudent.countStuNumByClass(table);
+	}
+	
 	//查询全部表单
 	public List<String> queryAllClass() {
 		return istudent.findAllTable();
 	}
+	
 	//创建一个新表单
 	public boolean createTabByExcel(String table) {
 		//根据表名创建一张新表
