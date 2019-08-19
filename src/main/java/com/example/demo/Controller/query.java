@@ -52,7 +52,7 @@ public class query {
 		int pageSize = 2;//Integer.parseInt(request.getParameter("pageSize"));
 		int allPage = (int) Math.ceil(countClassmate/(pageSize*1.0));
 		int currentPage = 1;
-		//设定默认页码
+		//设定默认页码'
 		if(page!=null) {
 			currentPage = Integer.parseInt(page);
 			//currentPage = currentPage<1?1:Integer.parseInt(page);
