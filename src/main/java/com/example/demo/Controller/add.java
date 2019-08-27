@@ -4,17 +4,15 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.Service.myService;
 import com.example.demo.entity.Student;
 
 @Controller
 public class add {
-	@Autowired
-	private myService myservice;
+//	@Autowired
+//	private myService myservice;
 	
 	//增加一个学生
 	@RequestMapping("/addStudentByClass")
@@ -29,7 +27,7 @@ public class add {
 		student.setSclass(request.getParameter("sclass")); 
 		String myClass = request.getParameter("sclass");
 		//调用service函数
-		boolean insert = myservice.insert(student);
+//		boolean insert = myservice.insert(student);
 		map.put("addStudentByClass",myClass);
 		return "redirect:queryAllByClass?sclass="+myClass;
 	}
